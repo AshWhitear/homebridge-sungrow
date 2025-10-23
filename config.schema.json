@@ -1,0 +1,80 @@
+{
+  "pluginAlias": "SungrowInverter",
+  "pluginType": "accessory",
+  "singular": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "My Solar Panels",
+        "required": true,
+        "description": "The name of your Sungrow inverter accessory"
+      },
+      "ipAddress": {
+        "title": "IP Address",
+        "type": "string",
+        "required": true,
+        "format": "ipv4",
+        "placeholder": "192.168.1.100",
+        "description": "The IP address of your Sungrow inverter. You can find this from your router."
+      },
+      "port": {
+        "title": "Modbus Port",
+        "type": "integer",
+        "default": 502,
+        "required": true,
+        "description": "The Modbus TCP port. Default for Sungrow wifi dongle is 502."
+      },
+      "model": {
+        "title": "Model",
+        "type": "string",
+        "default": "SG2KTL-S",
+        "placeholder": "SG2KTL-S",
+        "description": "Your inverter model name (for display purposes)"
+      },
+      "serialNumber": {
+        "title": "Serial Number",
+        "type": "string",
+        "placeholder": "A123456789",
+        "description": "Your inverter serial number (for display purposes)"
+      },
+      "refreshInterval": {
+        "title": "Refresh Interval",
+        "type": "number",
+        "default": 1,
+        "minimum": 0.5,
+        "maximum": 60,
+        "description": "Polling interval in minutes. How often to check the inverter for power data."
+      }
+    }
+  },
+  "layout": [
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": [
+        "name",
+        {
+          "type": "flex",
+          "flex-flow": "row",
+          "items": [
+            "ipAddress",
+            "port"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": [
+        "model",
+        "serialNumber"
+      ]
+    },
+    "refreshInterval"
+  ]
+}
+
